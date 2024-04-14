@@ -1,1 +1,23 @@
-<p>vacina-listagem works!</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Pais de Origem</th>
+        <th>Pesquisador Responsável</th>
+        <th>Data de Inicio da Pesquisa</th>
+        <th>Estágio da Pesquisa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vacina of vacinas">
+        <td>{{ vacina.nome }}</td>
+        <td>{{ vacina.paisOrigem }}</td>
+        <td>{{ vacina.pesquisadorResponsavel }}</td>
+        <td>{{ vacina.dataInicioPesquisa | date: 'dd/MM/yyyy'}}</td>
+        <td>{{ vacina.estagioPesquisa }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
