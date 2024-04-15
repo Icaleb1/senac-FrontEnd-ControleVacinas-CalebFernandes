@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VacinasService {
 
-  private readonly API = 'http://localhost:8080/senac-20241-backend-exemplos/rest/vacina'
+  private readonly API = 'http://localhost:8080/senac-backEnd-controleVacinas-calebFernandes-2024/rest/vacina';
 
   constructor(private httpClient: HttpClient) { }
 
