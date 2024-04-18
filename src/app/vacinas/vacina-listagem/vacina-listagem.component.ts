@@ -1,6 +1,7 @@
+import { PaisesService } from './../../shared/service/paises.service';
+import { VacinasService } from './../../shared/service/vacinas.service';
 import { Component, OnInit } from '@angular/core';
 import { Vacina } from '../../shared/model/vacina';
-import { VacinasService } from '../../shared/service/vacinas.service';
 import { NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { VacinasRoutingModule } from '../vacinas-routing.module';
@@ -15,19 +16,23 @@ export class VacinaListagemComponent implements OnInit{
 
   public vacinas: Vacina[] = [];
 
-  constructor(private vacinaService: VacinasService) { }
+  constructor(private VacinasService: VacinasService) { }
+
+
 
   ngOnInit(): void{
     this.consultarTodasVacinas();
   }
 
+
+
   private consultarTodasVacinas(){
-    this.vacinaService.listarTodas().subscribe (
+    this.VacinasService.listarTodas().subscribe (
       resultado => {
         this.vacinas = resultado;
       },
       erro => {
-        console.error('Erro ao consultar cartas', erro);
+        console.error('Erro ao consultar vacinas', erro);
       }
     );
   }
