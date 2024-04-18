@@ -7,8 +7,8 @@ export interface Vacina {
   nome: string;
   pesquisadorResponsavel: Pessoa;
   estagioPesquisa: number;
-  dataInicioPesquisa: Date;
-  paisOrigem: Pais;
+  dataInicio: Date;
+  pais: Pais;
   media: number;
 
 }

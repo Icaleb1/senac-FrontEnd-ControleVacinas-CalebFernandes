@@ -17,8 +17,8 @@ export class VacinasService {
     return this.httpClient.get<Array<Vacina>>(this.API+"/todas");
   }
 
-  public consultarComSeletor(seletor: VacinaSeletor): Observable<Array<VacinaSeletor>>{
-    return this.httpClient.post<Array<VacinaSeletor>>(this.API+"/filtro",seletor)
+  public consultarComSeletor(seletor: VacinaSeletor): Observable<Array<Vacina>>{
+    return this.httpClient.post<Array<Vacina>>(this.API+"/filtro",seletor)
   }
 
   public consultarPorId(id:number): Observable<Vacina>{
