@@ -45,4 +45,8 @@ export class VacinaListagemComponent implements OnInit{
       }
     );
   }
+
+  public limpar(){
+    this.seletor = new VacinaSeletor();
+  }
 }
