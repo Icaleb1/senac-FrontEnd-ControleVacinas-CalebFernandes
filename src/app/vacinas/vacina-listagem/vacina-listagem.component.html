@@ -62,6 +62,7 @@
         <th>Data de Inicio da Pesquisa</th>
         <th>Estágio da Pesquisa</th>
         <th>Média</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -73,6 +74,12 @@
           <td>{{ vacina.dataInicio | date: 'dd/MM/yyyy'}}</td>
           <td>{{ vacina.estagioPesquisa }}</td>
           <td>{{ vacina.media}}</td>
+          <td>
+            <div class="row">
+              <button class="btn-primary col-md-4">Editar</button>
+              <button class="btn btn-danger col-md-4">Excluir</button>
+            </div>
+          </td>
         </tr>
       }
     </tbody>

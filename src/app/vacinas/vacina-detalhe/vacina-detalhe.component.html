@@ -1,0 +1,54 @@
+<div class="container">
+  <form>
+    <div class="card">
+      <div class="card-header text-white bg-primary">
+        <h4>Nova Vacina</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="nomePais" class="for m-label">Nome da vacina:</label>
+            <input type="text" class="form-control" name="nomePais" >
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="nomeVacina" class="form-label">Pais de origem:</label>
+            <input type="text" class="form-control" name="nomeVacina">
+          </div>
+
+
+
+          <div class="col-md-6 form-group">
+            <label for="nomePesquisador" class="form-label">Pesquisador:</label>
+            <select class="form-select" name="pesquisadorResponsavel"
+                    [ngModelOptions]="{standalone: true}"
+                    aria-label="Selecione o Pesquisador"
+                    [compareWith]="compareById"
+                    [(ngModel)]="vacina.pesquisadorResponsavel">
+                    <option *ngFor="let Pesquisador of Pessoas"
+                    [ngValue]="pesquisador">{{Pesquisador}}</option>
+            id=""></select>
+          </div>
+
+
+
+          <div class="col-md-6 form-group">
+            <label for="dataInicioSelecao" class="form-label">Início da pesquisa:</label>
+            <input type="date" class="form-control" name="dataInicioSelecao">
+          </div>
+
+        </div>
+        <br>
+        <div class="row">
+
+          <div class="col-md-6">
+              <button type="submit" class="btn btn-primary col-md-12" name="btnPesquisar"
+                  >Pesquisar</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-warning col-md-12" name="btnPesquisar">Limpar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
