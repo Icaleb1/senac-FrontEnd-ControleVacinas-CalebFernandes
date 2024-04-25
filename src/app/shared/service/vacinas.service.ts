@@ -1,8 +1,9 @@
+import { Vacina } from './../model/vacina';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vacina } from '../model/vacina';
 import { HttpClient } from '@angular/common/http';
 import { VacinaSeletor } from '../model/seletor/seletor';
+import { Pessoa } from '../model/pessoa';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class VacinasService {
     return this.httpClient.get<Array<Vacina>>(this.API+"/todas");
   }
 
+
   public consultarComSeletor(seletor: VacinaSeletor): Observable<Array<Vacina>>{
     return this.httpClient.post<Array<Vacina>>(this.API+"/filtro",seletor)
   }
@@ -28,5 +30,10 @@ export class VacinasService {
   public excluirVacina(id:number): Observable<boolean>{
     return this.httpClient.delete<boolean>(this.API+"/"+id)
   }
+
+  public salvar(vacina: Vacina): Observable<any> {
+    return this.httpClient.post<any>(this.API, vacina);
+  }
+
 
 }

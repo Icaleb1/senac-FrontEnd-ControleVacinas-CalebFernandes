@@ -1,8 +1,7 @@
 import { Pais } from "./pais";
 import { Pessoa } from "./pessoa";
 
-export interface Vacina {
-
+export class Vacina {
   id: number;
   nome: string;
   pesquisadorResponsavel: Pessoa;
@@ -10,5 +9,4 @@ export interface Vacina {
   dataInicio: Date;
   pais: Pais;
   media: number;
-
 }

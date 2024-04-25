@@ -17,7 +17,7 @@ export class VacinaListagemComponent implements OnInit{
   public vacinas: Array<Vacina> = new Array();
   public seletor: VacinaSeletor = new VacinaSeletor();
 
-  constructor(private VacinaService: VacinaService) { }
+  constructor(private vacinaService: VacinaService) { }
 
   ngOnInit(): void{
     this.consultarTodasVacinas();
@@ -25,7 +25,7 @@ export class VacinaListagemComponent implements OnInit{
   }
 
   public pesquisar(){
-    this.VacinaService.consultarComSeletor(this.seletor).subscribe(
+    this.vacinaService.consultarComSeletor(this.seletor).subscribe(
       resultado => {
         this.vacinas = resultado;
       },
@@ -36,7 +36,7 @@ export class VacinaListagemComponent implements OnInit{
   }
 
   private consultarTodasVacinas(){
-    this.VacinaService.listarTodas().subscribe (
+    this.vacinaService.listarTodas().subscribe (
       resultado => {
         this.vacinas = resultado;
       },

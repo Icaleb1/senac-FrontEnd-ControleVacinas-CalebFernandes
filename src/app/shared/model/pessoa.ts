@@ -1,7 +1,6 @@
 import { Pais } from "./pais";
 
-export interface Pessoa{
-
+export class Pessoa{
   id: number;
   nome: string;
   dataNascimento: Date;
@@ -10,5 +9,4 @@ export interface Pessoa{
   tipoPessoa: number;
   pais: Pais;
   media: number;
-
 }
