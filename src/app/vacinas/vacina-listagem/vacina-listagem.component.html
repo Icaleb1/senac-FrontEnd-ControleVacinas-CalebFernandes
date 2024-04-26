@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-6 form-group">
-            <label for="nomePais" class="for m-label">Nome do País:</label>
+            <label for="nomePais" class="form-label">Nome do País:</label>
             <input type="text" class="form-control" name="nomePais" [(ngModel)]="seletor.nomePais">
           </div>
           <div class="col-md-6 form-group">
@@ -81,12 +81,15 @@
           <td>
             <div class="row" >
               <div class="col-md-4">
-                <button class="btn btn-primary ">Editar</button>
+                <button type="submit" class="btn btn-primary " (click)="editar(vacina.id)">Editar</button>
               </div>
               <div class="col-md-4">
-                <button class="btn btn-danger ">Excluir</button>
+                <button type="submit" class="btn btn-danger " (click)="excluir(vacina)" name="btnExcluir">Excluir</button>
               </div>
-
+              <!-- <div class="col-md-6">
+                <button type="submit" class="btn btn-warning col-md-12" (click)="limpar()" name="btnPesquisar"
+                        (click)="pesquisar()">Limpar</button>
+              </div> -->
 
             </div>
           </td>

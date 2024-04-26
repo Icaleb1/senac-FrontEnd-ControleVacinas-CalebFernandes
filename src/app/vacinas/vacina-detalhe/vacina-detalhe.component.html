@@ -11,7 +11,6 @@
             <input type="text" class="form-control" name="nomeVacina" [(ngModel)]="vacina.nome" required >
           </div>
           <div class="col-md-6 form-group">
-            <!-- TODO trocar para select -->
             <label for="nomePais" class="form-label">Pais de origem:</label>
             <select class="form-control" name="pesquisadorResponsavel"
                     [(ngModel)]="vacina.pais">
@@ -20,9 +19,6 @@
             }
             </select>
           </div>
-
-
-
           <div class="col-md-6 form-group">
             <label for="pesquisadorResponsavel" class="form-label">Pesquisador:</label>
             <select class="form-control" name="pesquisadorResponsavel"
@@ -32,12 +28,14 @@
             }
             </select>
           </div>
-
-
-
           <div class="col-md-6 form-group">
             <label for="dataInicioSelecao" class="form-label">Início da pesquisa:</label>
             <input type="date" class="form-control" name="dataInicioSelecao" [(ngModel)]="vacina.dataInicio" required>
+          </div>
+          <div class="col-md-6 fomr-group">
+            <label for="estagioPesquisa" class="form-label">Estágio da pesquisa:</label>
+            <input type="number" class="form-control" name="estagioPesquisa" [(ngModel)]="vacina.estagioPesquisa" required >
+
           </div>
 
         </div>

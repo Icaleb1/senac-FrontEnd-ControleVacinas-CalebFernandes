@@ -1,14 +1,15 @@
-import { PaisesService } from './../../shared/service/paises.service';
-import { VacinasService } from './../../shared/service/vacinas.service';
+import { PaisesService } from '../../shared/service/paisService/paises.service';
+import { VacinasService } from '../../shared/service/vacinaService/vacinas.service';
 import { Vacina } from './../../shared/model/vacina';
 
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { VacinaSeletor } from '../../shared/model/seletor/seletor';
 import { Pessoa } from '../../shared/model/pessoa';
-import { PessoasService } from '../../shared/service/pessoas.service';
+import { PessoasService } from '../../shared/service/pessoaService/pessoas.service';
 import { Pais } from '../../shared/model/pais';
+import { error } from 'console';
 
 @Component({
   selector: 'app-vacina-detalhe',
@@ -20,20 +21,40 @@ export class VacinaDetalheComponent implements OnInit{
   public vacina: Vacina = new Vacina();
   public pesquisadores: Array<Pessoa> = [];
   public paises: Array<Pais> = [];
+  public idVacina: number;
 
   constructor(private vacinaService: VacinasService,
               //TODO criar PessoaSErvice
               private pessoaService: PessoasService,
               private paisService: PaisesService,
-              private router: Router
+              private router: Router,
+              private route: ActivatedRoute
   ) { }
 
 
 
   ngOnInit(): void {
-    //TODO descomentar
+    this.route.params.subscribe((params) => {
+      this.idVacina = params['id'];
+      if(this.idVacina){
+        this.buscarVacina();
+      }
+    })
 
+  }
 
+  public buscarVacina(): void{
+    this.vacinaService.consultarPorId(this.idVacina).subscribe(
+      (vacina) => {
+        this.vacina = vacina;
+      },
+      (erro) => {
+        Swal.fire('Erro ao buscar vacina! ', erro, 'error');
+      }
+    );
+  }
+
+  public listarPesquisadores(){
     this.pessoaService.listarPesquisadores().subscribe(
       resultado => {
         this.pesquisadores = resultado
@@ -42,7 +63,8 @@ export class VacinaDetalheComponent implements OnInit{
         Swal.fire('Erro ao listar pesquisadores!', erro, 'error');
       }
     );
-
+  }
+    public listarTodosPaises(){
     this.paisService.listarTodosPaises().subscribe(
       resultado => {
         this.paises = resultado
@@ -51,9 +73,6 @@ export class VacinaDetalheComponent implements OnInit{
         Swal.fire('Erro ao listar pesquisadores!', erro, 'error');
       }
     );
-  
-
-
   }
 
   public salvar(){
@@ -66,7 +85,19 @@ export class VacinaDetalheComponent implements OnInit{
        Swal.fire('Erro ao salvar a vacina!', erro, 'error');
      }
    );
- }
+  }
+
+  public atualizar(){
+    this.vacinaService.atualizar(this.vacina).subscribe(
+      (resposta) => {
+        Swal.fire('Vacina atualizada com sucesso!', '', 'success');
+        this.voltar();
+      },
+      (erro) => {
+        Swal.fire('Erro ao atualizar a vacina: ' + erro.error.mensagem, 'error');
+      }
+    );
+  }
 
 
 
