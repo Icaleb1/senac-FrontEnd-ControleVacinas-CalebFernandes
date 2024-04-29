@@ -31,7 +31,7 @@ export class VacinasService {
     return this.httpClient.delete<boolean>(this.API+"/"+id)
   }
 
-  public salvar(vacina: Vacina): Observable<any> {
+  public inserir(vacina: Vacina): Observable<any> {
     return this.httpClient.post<any>(this.API, vacina);
   }
 

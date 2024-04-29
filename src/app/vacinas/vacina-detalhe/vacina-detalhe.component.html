@@ -1,3 +1,5 @@
+<pre>{{ vacina | json }}</pre>
+
 <div class="container" data-bs-theme="dark">
   <form>
     <div class="card">
@@ -8,49 +10,89 @@
         <div class="row">
           <div class="col-md-6 form-group">
             <label for="nomeVacina" class="for m-label">Nome da vacina:</label>
-            <input type="text" class="form-control" name="nomeVacina" [(ngModel)]="vacina.nome" required >
+            <input
+              type="text"
+              class="form-control"
+              name="nomeVacina"
+              [(ngModel)]="vacina.nome"
+              required
+            />
           </div>
           <div class="col-md-6 form-group">
             <label for="nomePais" class="form-label">Pais de origem:</label>
-            <select class="form-control" name="pesquisadorResponsavel"
-                    [(ngModel)]="vacina.pais">
-            @for(pais of paises; track pais.id){
-              <option [ngValue]="pais">{{pais.nome}}</option>
-            }
+            <select
+              class="form-control"
+              name="pesquisadorResponsavel"
+              [(ngModel)]="vacina.pais"
+              [compareWith]="compareById"
+            >
+              @for(pais of paises; track pais.id){
+              <option [ngValue]="pais">{{ pais.nome }}</option>
+              }
             </select>
           </div>
           <div class="col-md-6 form-group">
-            <label for="pesquisadorResponsavel" class="form-label">Pesquisador:</label>
-            <select class="form-control" name="pesquisadorResponsavel"
-                    [(ngModel)]="vacina.pesquisadorResponsavel">
-            @for(pesquisador of pesquisadores; track pesquisador.id){
-              <option [ngValue]="pesquisador">{{pesquisador.nome}}</option>
-            }
+            <label for="pesquisadorResponsavel" class="form-label"
+              >Pesquisador:</label
+            >
+            <select
+              class="form-control"
+              name="pesquisadorResponsavel"
+              [(ngModel)]="vacina.pesquisadorResponsavel"
+              [compareWith]="compareById"
+            >
+              @for(pesquisador of pesquisadores; track pesquisador.id){
+              <option [ngValue]="pesquisador">{{ pesquisador.nome }}</option>
+              }
             </select>
           </div>
-          <div class="col-md-6 form-group">
-            <label for="dataInicioSelecao" class="form-label">Início da pesquisa:</label>
-            <input type="date" class="form-control" name="dataInicioSelecao" [(ngModel)]="vacina.dataInicio" required>
+          <div class="col-md-3 form-group">
+            <label for="dataInicioSelecao" class="form-label"
+              >Início da pesquisa:</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              name="dataInicioSelecao"
+              [(ngModel)]="vacina.dataInicio"
+              required
+            />
           </div>
-          <div class="col-md-6 fomr-group">
-            <label for="estagioPesquisa" class="form-label">Estágio da pesquisa:</label>
-            <input type="number" class="form-control" name="estagioPesquisa" [(ngModel)]="vacina.estagioPesquisa" required >
-
+          <div class="col-md-3 form-group">
+            <label for="estagioPesquisa" class="form-label"
+              >Estágio da pesquisa:</label>
+              {{vacina.estagioPesquisa}}
+            <input
+              type="range"
+              class="form-range"
+              name="estagioPesquisa"
+              min="1"
+              max="3"
+              [(ngModel)]="vacina.estagioPesquisa"
+              required
+            />
           </div>
-
         </div>
-        <br>
+        <br />
         <div class="row">
-          <div class=" form-group col-md-6">
-              <button type="submit" class="form-control btn btn-warning col-md-12" (click)="voltar()">
+          <div class="form-group col-md-6">
+            <button
+              type="submit"
+              class="form-control btn btn-warning col-md-12"
+              (click)="voltar()"
+            >
               <i class="bi bi-arrow-left"></i>Voltar
-              </button>
+            </button>
           </div>
 
-          <div class=" form-group col-md-6">
-              <button type="submit" class="form-control btn btn-primary col-md-12" (click)="salvar()">
+          <div class="form-group col-md-6">
+            <button
+              type="submit"
+              class="form-control btn btn-primary col-md-12"
+              (click)="salvar()"
+            >
               <i class="bi bi-check"></i>Salvar
-              </button>
+            </button>
           </div>
         </div>
       </div>

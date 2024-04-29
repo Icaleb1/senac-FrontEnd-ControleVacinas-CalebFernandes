@@ -39,8 +39,10 @@ export class VacinaDetalheComponent implements OnInit{
       if(this.idVacina){
         this.buscarVacina();
       }
-    })
+    });
 
+    this.listarPesquisadores();
+    this.listarTodosPaises();
   }
 
   public buscarVacina(): void{
@@ -75,8 +77,16 @@ export class VacinaDetalheComponent implements OnInit{
     );
   }
 
-  public salvar(){
-    this.vacinaService.salvar(this.vacina).subscribe(
+  public salvar(): void{
+    if(this.idVacina){
+      this.atualizar();
+    }else{
+      this.inserir();
+    }
+  }
+
+  public inserir(){
+    this.vacinaService.inserir(this.vacina).subscribe(
       (resposta) => {
        Swal.fire('Vacina salva com sucesso!', '', 'success');
         this.voltar();
@@ -102,6 +112,10 @@ export class VacinaDetalheComponent implements OnInit{
 
 
   voltar() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['/vacinas']);
+  }
+
+  public compareById(r1: any, r2: any): boolean {
+    return r1 && r2 ? r1.id === r2.id : r1 === r2;
   }
 }
