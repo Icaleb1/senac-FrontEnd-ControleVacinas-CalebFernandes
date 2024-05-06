@@ -31,14 +31,6 @@
             <input type="date" class="form-control" name="dataFinalSelecao" [(ngModel)]="seletor.dataFinalSelecao">
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-primary" (click)="pesquisar()">Pesquisar</button>
-          </div>
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-warning" (click)="limpar()">Limpar</button>
-          </div>
-        </div> -->
         <br>
         <div class="row">
 
@@ -58,7 +50,7 @@
   <br><br>
 
   <table class="table table-dark table-striped border-primary">
-    <thead>
+    <thead style="text-align: center;">
       <tr>
         <th>Nome</th>
         <th>Pais de Origem</th>
@@ -69,7 +61,7 @@
         <th>Ações</th>
       </tr>
     </thead>
-    <tbody class="table-group-divider border-primary">
+    <tbody class="table-group-divider border-primary" style="text-align: center;">
       @for (vacina of vacinas; track vacina){
         <tr>
           <td>{{ vacina.nome }}</td>
@@ -79,18 +71,11 @@
           <td>{{ vacina.estagioPesquisa }}</td>
           <td>{{ vacina.media}}</td>
           <td>
-            <div class="row" >
-              <div class="col-md-4">
-                <button type="submit" class="btn btn-primary " (click)="editar(vacina.id)">Editar</button>
-              </div>
-              <div class="col-md-4">
-                <button type="submit" class="btn btn-danger " (click)="excluir(vacina)" name="btnExcluir">Excluir</button>
-              </div>
-              <!-- <div class="col-md-6">
-                <button type="submit" class="btn btn-warning col-md-12" (click)="limpar()" name="btnPesquisar"
-                        (click)="pesquisar()">Limpar</button>
-              </div> -->
-
+            <div class="row" style="text-align: center;">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary col-md-5" (click)="editar(vacina.id)">Editar</button>
+                &nbsp;
+                <button type="submit" class="btn btn-danger col-md-5" (click)="excluir(vacina)" name="btnExcluir">Excluir</button>
             </div>
           </td>
         </tr>

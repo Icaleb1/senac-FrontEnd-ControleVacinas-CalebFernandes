@@ -2,7 +2,7 @@ import { Vacina } from '../../model/vacina';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { VacinaSeletor } from '../../model/seletor/seletor';
+import { VacinaSeletor } from '../../model/seletor/vacinaSeletor';
 import { Pessoa } from '../../model/pessoa';
 
 @Injectable({

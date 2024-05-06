@@ -1,13 +1,9 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { VacinasService as VacinaService } from '../../shared/service/vacinaService/vacinas.service';
 import { Component, OnInit } from '@angular/core';
-import { Vacina } from '../../shared/model/vacina';
-import { NgModel } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { VacinasRoutingModule } from '../vacinas-routing.module';
-import { VacinaSeletor } from '../../shared/model/seletor/seletor';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { error } from 'console';
+import { VacinaSeletor } from '../../shared/model/seletor/vacinaSeletor';
+import { Vacina } from '../../shared/model/vacina';
+import { VacinasService as VacinaService } from '../../shared/service/vacinaService/vacinas.service';
 
 @Component({
   selector: 'app-vacina-listagem',
@@ -27,7 +23,6 @@ export class VacinaListagemComponent implements OnInit{
 
   ngOnInit(): void{
     this.consultarTodasVacinas();
-    this.seletor.nomePais = "teste";
   }
 
   public pesquisar(){

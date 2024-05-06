@@ -5,7 +5,7 @@ import { Vacina } from './../../shared/model/vacina';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { VacinaSeletor } from '../../shared/model/seletor/seletor';
+import { VacinaSeletor } from '../../shared/model/seletor/vacinaSeletor';
 import { Pessoa } from '../../shared/model/pessoa';
 import { PessoasService } from '../../shared/service/pessoaService/pessoas.service';
 import { Pais } from '../../shared/model/pais';
