@@ -18,9 +18,16 @@ export class VacinasService {
     return this.httpClient.get<Array<Vacina>>(this.API+"/todas");
   }
 
-
   public consultarComSeletor(seletor: VacinaSeletor): Observable<Array<Vacina>>{
     return this.httpClient.post<Array<Vacina>>(this.API+"/filtro",seletor)
+  }
+
+  public contarTotalRegistros(seletor: VacinaSeletor): Observable<number>{
+      return this.httpClient.post<number>(this.API + '/contar', seletor);
+  }
+
+  public contarPaginas(seletor: VacinaSeletor): Observable<number>{
+    return this.httpClient.post<number>(this.API + '/total-paginas', seletor);
   }
 
   public consultarPorId(id:number): Observable<Vacina>{

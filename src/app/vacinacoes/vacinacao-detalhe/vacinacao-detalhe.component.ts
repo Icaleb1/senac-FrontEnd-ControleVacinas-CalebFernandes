@@ -1,6 +1,6 @@
+import { Vacinacao } from './../../shared/model/vacinacao';
 import { Component, OnInit } from '@angular/core';
 import { VacinacoesService } from '../../shared/service/vacinacaoService/vacinacoes.service';
-import { Vacinacao } from '../../shared/model/vacinacao';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,14 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class VacinacaoDetalheComponent implements OnInit{
 
+  public vacinacao: Vacinacao = new Vacinacao();
+
+
 
   constructor(
     private vacinacaoService: VacinacoesService,
-    private vacinacao: Vacinacao,
     private router: Router,
     private route: ActivatedRoute
-
-
   ){}
 
   ngOnInit(): void {
@@ -41,5 +41,9 @@ export class VacinacaoDetalheComponent implements OnInit{
         Swal.fire('Erro ao salvar a vacinacao!', erro, 'error' );
       }
     );
+  }
+
+  public compareById(r1: any, r2: any): boolean {
+    return r1 && r2 ? r1.id === r2.id : r1 === r2;
   }
 }

@@ -8,3 +8,4 @@ export class Vacinacao {
   dataAplicacao: Date;
   avaliacao: number;
 }
+

@@ -1,3 +1,5 @@
+import { BaseSeletor } from "./baseSeletor";
+
 export class PessoaSeletor {
 
   nomePessoa: string;
