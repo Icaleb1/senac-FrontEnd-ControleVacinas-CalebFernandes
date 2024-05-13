@@ -10,36 +10,48 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-6 form-group">
-            <label for="nome" class="form-label">Nome da vacina:</label>
-            <input
-              type="text"
+            <label for="vacina" class="form-label">Nome da vacina:</label>
+            <select
               class="form-control"
-              name="nomeVacina"
+              name="vacina"
               [(ngModel)]="vacinacao.vacina"
+              [compareWith]="compareById"
+            >
+              @for (vacina of vacinas; track vacina.id) {
+              <option [ngValue]="vacina">{{ vacina.nome }}</option>
+              }
+            </select>
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="idPessoa" class="form-label">Nome da Pessoa:</label>
+            <select
+              class="form-control"
+              name="idPessoa"
+              [(ngModel)]="vacinacao.idPessoa"
+              [compareWith]="compareById"
+            >
+              @for (pessoa of pessoas; track pessoa.id) {
+              <option [ngValue]="pessoa">{{ pessoa.nome }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label for="avaliacao" class="form-label"
+              >Avaliação:</label>
+              {{vacinacao.avaliacao}}
+            <input
+              type="range"
+              class="form-range"
+              name="estagioPesquisa"
+              min="1"
+              max="5"
+              [(ngModel)]="vacinacao.avaliacao"
               required
             />
           </div>
+
           <div class="col-md-6 form-group">
-            <label for="nomePais" class="form-label">Nome da pessoa:</label>
-            <select
-              class="form-control"
-              name="pesquisadorResponsavel"
-              [(ngModel)]="vacinacao.idPessoa"
-              [compareWith]="compareById"
-            ></select>
-          </div>
-          <div class="col-md-6 form-group">
-            <label for="pesquisadorResponsavel" class="form-label"
-              >Pesquisador:</label
-            >
-            <select
-              class="form-control"
-              name="pesquisadorResponsavel"
-              [(ngModel)]="vacinacao.avaliacao"
-              [compareWith]="compareById"
-            ></select>
-          </div>
-          <div class="col-md-3 form-group">
             <label for="dataInicioSelecao" class="form-label"
               >Data da aplicação:</label
             >
