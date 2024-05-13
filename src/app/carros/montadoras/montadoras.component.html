@@ -1,0 +1,46 @@
+
+<div class="container" data-bs-theme="dark">
+  <div class="alert alert-light" role="alert">
+    <h3>Vacinas cadastradas no sistema:</h3>
+  </div>
+  <form >
+    <div class="card">
+      <div class="card-header text-white bg-primary">
+        <h4>Filtros</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+
+
+          <div class="col-md-6 form-group">
+            <label for="idMontadora" class="form-label">Nome da montadora:</label>
+            <select
+              class="form-control"
+              name="idMontadora"
+              [(ngModel)]="montadora.id"
+              [compareWith]="compareById"
+            >
+              @for (montadora of montadoras; track montadora.id) {
+              <option [ngValue]="montadora.id">{{ montadora.nome}} ({{montadora.paisFundacao}})</option>
+              }
+            </select>
+          </div>
+
+    
+        </div>
+        <br>
+        <div class="row">
+
+          <div class="col-md-6">
+              <button type="submit" class="btn btn-primary col-md-12" (click)="pesquisar()" name="btnPesquisar"
+                      (click)="pesquisar()">Consultar Estoque</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br><br>
+
+
+</div>
+

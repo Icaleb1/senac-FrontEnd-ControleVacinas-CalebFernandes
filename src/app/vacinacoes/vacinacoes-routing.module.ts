@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { VacinacaoDetalheComponent } from './vacinacao-detalhe/vacinacao-detalhe.component';
 
 const routes: Routes = [
-  {path: 'detalhe', component:VacinacaoDetalheComponent}
+  {path: 'detalhe', component:VacinacaoDetalheComponent},
+  {path: 'detalhe/:id', component:VacinacaoDetalheComponent}
 ];
 
 @NgModule({

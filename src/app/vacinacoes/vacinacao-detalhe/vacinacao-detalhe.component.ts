@@ -7,6 +7,7 @@ import { Vacina } from '../../shared/model/vacina';
 import { Pessoa } from '../../shared/model/pessoa';
 import { PessoasService } from '../../shared/service/pessoaService/pessoas.service';
 import { VacinasService } from '../../shared/service/vacinaService/vacinas.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-vacinacao-detalhe',
@@ -18,6 +19,7 @@ export class VacinacaoDetalheComponent implements OnInit{
   public vacinas: Array<Vacina> = [];
   public pessoas: Array<Pessoa> = [];
   public vacinacao: Vacinacao = new Vacinacao();
+  public idVacinacao: number;
 
 
 
@@ -30,6 +32,12 @@ export class VacinacaoDetalheComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.idVacinacao = params['id'];
+      if(this.idVacinacao){
+        this.buscarVacinacao();
+      }
+    })
 
 
     this.listarTodasPessoas();
@@ -40,16 +48,45 @@ export class VacinacaoDetalheComponent implements OnInit{
     this.router.navigate(['/vacinas']);
   }
 
+  public buscarVacinacao(): void{
+    this.vacinacaoService.consultarPorId(this.idVacinacao).subscribe(
+      (vacinacao) => {
+        this.vacinacao = vacinacao;
+      },
+      (erro) => {
+        Swal.fire('Erro ao buscar Vacinacao! ', erro, 'error');
+      }
+    );
+  }
+
+  public salvar(): void{
+    if(this.idVacinacao){
+      this.atualizar();
+    }else{
+      this.inserir();
+    }
+  }
 
   public inserir(){
     this.vacinacaoService.inserir(this.vacinacao).subscribe(
       (resposta) => {
-        Swal.fire('Vacinacao salva com sucesso!',
-          '', 'success');
+        Swal.fire('Vacinacao salva com sucesso!','', 'success');
           this.voltar();
       },
       (erro) => {
-        Swal.fire('Erro ao salvar a vacinacao!', erro, 'error' );
+        Swal.fire('Erro ao salvar a vacinacao!', erro, 'error');
+      }
+    );
+  }
+
+  public atualizar(){
+    this.vacinacaoService.atualizar(this.vacinacao).subscribe(
+      (resposta) => {
+        Swal.fire('Vacinação atualizada com Sucesso', '', 'success');
+        this.voltar();
+      },
+      (erro) => {
+        Swal.fire('Erro ao atualizar a Vacinação: ' + erro.error.mensagem, 'error');
       }
     );
   }

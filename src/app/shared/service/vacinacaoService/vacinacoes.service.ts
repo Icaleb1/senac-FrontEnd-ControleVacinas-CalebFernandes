@@ -16,6 +16,13 @@ export class VacinacoesService {
     return this.httpClient.post<any>(this.API, vacinacao);
   }
 
+  public atualizar(vacinacao: Vacinacao): Observable<any> {
+    return this.httpClient.put<any>(this.API+'/atualizar', vacinacao);
+  }
+
+  public consultarPorId(id:number): Observable<Vacinacao>{
+    return this.httpClient.get<Vacinacao>(this.API+"/"+id);
+  }
 
 
 }

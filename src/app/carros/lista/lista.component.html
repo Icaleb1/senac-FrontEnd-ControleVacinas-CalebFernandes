@@ -1,0 +1,79 @@
+
+<div class="container" data-bs-theme="dark">
+  <div class="alert alert-light" role="alert">
+    <h3>Vacinas cadastradas no sistema:</h3>
+  </div>
+  <form >
+    <div class="card">
+      <div class="card-header text-white bg-primary">
+        <h4>Filtros</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="marca" class="form-label">Nome da marca:</label>
+            <input type="text" class="form-control" name="marca" [(ngModel)]="seletor.nomeMarca">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="modelo" class="form-label">Modelo:</label>
+            <input type="text" class="form-control" name="modelo" [(ngModel)]="seletor.modelo">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="dataInicioSelecao" class="form-label">Ano inicial. De:</label>
+            <input type="number" class="form-control" name="dataInicioSelecao" [(ngModel)]="seletor.anoInicial">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="dataFinalSelecao" class="form-label">Até:</label>
+            <input type="number" class="form-control" name="dataFinalSelecao" [(ngModel)]="seletor.anoFinal">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+
+          <div class="col-md-6">
+              <button type="submit" class="btn btn-primary col-md-12" (click)="pesquisar()" name="btnPesquisar"
+                      (click)="pesquisar()">Pesquisar</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-warning col-md-12" (click)="limpar()" name="btnPesquisar"
+                    (click)="pesquisar()">Limpar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br><br>
+  <table class="table table-dark table-striped border-primary">
+    <thead style="text-align: center;">
+      <tr>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Nome da Montadora</th>
+        <th>Ano</th>
+        <th>Valor</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider border-primary" style="text-align: center;">
+      @for (carro of carros; track carro){
+        <tr>
+          <td>{{ carro.placa}}</td>
+          <td>{{ carro.modelo }}</td>
+          <td>{{ carro.montadora.nome }}</td>
+          <td>{{ carro.ano}}</td>
+          <td>{{ 'R$' + carro.valor }}</td>
+          <td>
+            <div class="row" style="text-align: center;">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary col-md-5">Editar</button>
+                &nbsp;
+                <button type="submit" class="btn btn-danger col-md-5">Excluir</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+</div>
+
